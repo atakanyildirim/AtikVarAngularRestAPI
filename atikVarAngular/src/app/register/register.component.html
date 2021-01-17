@@ -1,0 +1,54 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="jumbotron bg-light">
+            <h1 class="display-4">Kayıt Formu</h1>
+            <hr class="my-4">
+            <h4 class="lead my-4">Giriş Bilgileri</h4>
+            <form [formGroup]="frmRegister" (ngSubmit)="onSubmit(frmRegister.value)">
+                <div class="form-group">
+                    <label for="kurumAdi">Kurum Adı</label>
+                    <input type="text" name="kurumAdi" formControlName="companyName" class="form-control" id="kurumAdi" required>
+                    <div class="invalid-feedback d-block" *ngIf="frmRegister.get('companyName').hasError('required') && frmRegister.get('companyName').dirty">
+                        Lütfen kurum adını giriniz
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="kullaniciAdi">Kullanıcı Adı</label>
+                    <input type="text" name="kullaniciAdi" formControlName="userName" class="form-control" id="kullaniciAdi" required>
+                    <div class="invalid-feedback d-block" *ngIf="frmRegister.get('userName').hasError('required') && frmRegister.get('userName').dirty">
+                        Lütfen kullanıcı adını giriniz
+                    </div>
+                    <div class="valid-feedback">
+                        Tamam
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="sifre">Password</label>
+                    <input type="password" class="form-control" formControlName="password" name="sifre" min="8" id="sifre" required>
+                    <div class="invalid-feedback d-block" *ngIf="frmRegister.get('password').hasError('required') && frmRegister.get('password').dirty">
+                        Lütfen Şifre giriniz
+                    </div>
+                    <div class="valid-feedback">
+                        Öneri: Şifreniz minimum 8 karekterden oluşmasını öneririz.
+                    </div>
+                </div>
+                <h4 class="lead my-4">Adres Bilgileri</h4>
+                <div class="form-group">
+                    <label for="adresAdi">Adres Adı</label>
+                    <input type="text" name="adresAdi" formControlName="addressName" class="form-control" id="adresAdi" required>
+                    <div class="invalid-feedback d-block" *ngIf="frmRegister.get('addressName').hasError('required') && frmRegister.get('addressName').dirty">
+                        Lütfen adres adı giriniz
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tamAdres">Adres</label>
+                    <textarea name="adres" class="form-control" formControlName="address" id="tamAdres" required></textarea>
+                    <div class="invalid-feedback d-block" *ngIf="frmRegister.get('address').hasError('required') && frmRegister.get('address').dirty">
+                        Lütfen adres giriniz
+                    </div>
+                </div>
+                <button type="submit" [disabled] = "frmRegister.invalid" class="btn btn-outline-success btn-lg"><i class="fa fa-recycle"></i> Kayıt Ol</button>
+            </form>
+        </div>
+    </div>
+</div>

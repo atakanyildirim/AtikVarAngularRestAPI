@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-lg-12">
+        <div class="jumbotron bg-light shadow">
+            <h1 class="display-4">Atık Ekle</h1>
+            <hr class="my-4">
+            <h4 class="lead my-4">Atık Ekleme Formu</h4>
+            <form [formGroup]="addWasteForm" (ngSubmit)="onSubmit(addWasteForm.value)">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="atikTur">Atık Türü</label>
+                    </div>
+                    <select class="custom-select" id="atikTur" formControlName="atikTuru" name="atikTuru">
+                        <option value="1" selected="true">Atık Pil</option>
+                        <option value="2">Kağıt Atık</option>
+                        <option value="3">Plastik Atık</option>
+                        <option value="4">Cam Atık</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Lütfen Atık türü seçiniz
+                    </div>
+                    <div class="valid-feedback">
+                        Tamam
+                    </div>
+                </div>
+                <div class="input-group form-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Miktar / Türü</span>
+                    </div>
+                    <input type="number" aria-label="miktar" formControlName="miktar" name="miktar" class="form-control" required>
+                    <select class="custom-select" formControlName="miktarTip" id="atikTur" name="miktarTip" required>
+                        <option value="adet">Adet</option>
+                        <option value="gr">Gr</option>
+                        <option value="kg">Kg</option>
+                        <option value="ton">Ton</option>
+                    </select>
+                </div>
+                <button type="submit" [disabled] = "addWasteForm.invalid" class="btn btn-outline-success btn-lg"><i class="fa fa-save"></i> Atık Ekle</button>
+            </form>
+        </div>
+    </div>
+</div>
