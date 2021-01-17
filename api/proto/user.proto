@@ -1,0 +1,19 @@
+syntax = "proto3"; //Specify proto3 version.
+ 
+package user; //benzersiz bir paket ismi
+ 
+//Service. GRPC sunucusunun istemci tarafına sundugu servis sözlesmesi
+service UserService {
+  rpc addUser (AddRequest) returns (AddReply);
+}
+ 
+message AddRequest {
+  string company_name = 1;
+  string username = 2;
+  string password = 3;
+}
+ 
+message AddReply {
+    bool isAdded = 1;
+  }
+   
